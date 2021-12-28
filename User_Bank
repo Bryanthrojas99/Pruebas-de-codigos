@@ -41,7 +41,7 @@ def ejecutar():
         print("Usuario o contraseña incorrecto.")
         return        
 
-    print("1.Depositar","2.Retirar")
+    print("1.Depositar o 2.Retirar")
     opcion = int(input())
     
     ok, saldo = accion(opcion)
