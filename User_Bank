@@ -1,12 +1,14 @@
-usuario_Bank = "kirito"
+usuario_Bank = "Kirito"
 clave_Bank = "1234"
 saldo = 2500
 
+
+print()
 print("Bienvenido al Sistema:")
 
 def validar_usuario(u, c):
     if u == usuario_Bank and c == clave_Bank:
-        return True, print("Ha accedido correctamente."), print("Saldo: $" + str(saldo)), print(), print("Seleccione una opción:"), print()
+        return True, print("Ha accedido correctamente, " + u + "."), print("Saldo: $" + str(saldo)), print(), print("Seleccione una opción:"), print()
     return False
 
 def login():
