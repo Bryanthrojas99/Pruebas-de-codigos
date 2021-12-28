@@ -31,10 +31,10 @@ def depositar(valor):
 
 def accion(opcion):
     if opcion == "1":
-        valor = int(input("$"))
+        valor = int(input("Digite la cantidad a depositar: $"))
         return depositar(valor)
     if opcion == "2":
-        valor = int(input("$"))
+        valor = int(input("Digite la cantidad a retirar: $"))
         return retirar(valor)
         
     return False, print("Opción no válida.")
@@ -53,4 +53,5 @@ def ejecutar():
         return ejecutar()
 
 ejecutar()
+
 
