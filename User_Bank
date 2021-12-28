@@ -1,0 +1,53 @@
+usuario_Bank = "bryanth"
+clave_Bank = "9910"
+saldo = 2500
+
+def validar_usuario(u, c):
+    if u == usuario_Bank and c == clave_Bank:
+        return True, print("Ha accedido correctamente.")
+    return False
+
+def login():
+    print()
+    print("Bienvenido al Sistema:")
+    print()
+    usuario = input("Usuario: ")
+    clave = input("Contraseña: ")
+    print()
+    return validar_usuario(usuario, clave)
+
+def retirar(valor):
+   if valor > saldo:
+       return False, "Su saldo no es suficiente: " + "$" + str(saldo)
+   return True, "Su saldo ahora es de: " + "$" + str(saldo - valor)
+
+def depositar(valor):
+   if valor <= 0:
+       return False, "No puede depositar un saldo inferior a 0"
+   return True, "Su saldo ahora es de: " + "$" + str(saldo + valor)
+
+def accion(opcion):
+    if opcion == 1:
+        valor = int(input("Cuánto desea depositar")
+        return depositar(valor)
+    if opcion == 2:
+        valor = int(input("Cuánto desea retirar")
+        return retirar(valor)
+
+    return False, print("Operación no válida.")
+
+def ejecutar():
+    if not login():
+        print("Usuario o contraseña incorrecto.")
+        return        
+
+    print("1.Depositar","2.Retirar")
+    opcion = int(input())
+    
+    ok, saldo = accion(opcion)
+    if not ok:
+        print("Operación no realizada, saldo: ", saldo) 
+    else:
+        print("Operación realizada con éxito, saldo: ", saldo)
+
+ejecutar()
