@@ -6,7 +6,7 @@ print("Bienvenido al Sistema:")
 
 def validar_usuario(u, c):
     if u == usuario_Bank and c == clave_Bank:
-        return True, print("Ha accedido correctamente."), print("Saldo: $" + str(saldo)), print()
+        return True, print("Ha accedido correctamente."), print("Saldo: $" + str(saldo)), print(), print("Seleccione una opción:"), print()
     return False
 
 def login():
@@ -44,16 +44,13 @@ def ejecutar():
         print("Usuario o contraseña incorrecto.")
         return ejecutar()
 
-    print("Seleccione una opción:")
-    print()
     opcion = input("1.Depositar o 2.Retirar ")
     
-    ok, saldo = accion(opcion)
-    if not ok:
-        return ejecutar()
-    else:
+    ok, saldo = accion(opcion) # ok devuelve un verdadero o falso si pudo hacer o no la acción.
+    if ok:
         print("Operación realizada con éxito, saldo: $" + str(int(saldo)))
-
+    else:
+        return ejecutar()
 
 ejecutar()
 
