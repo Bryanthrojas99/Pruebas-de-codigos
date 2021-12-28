@@ -2,14 +2,14 @@ usuario_Bank = "kirito"
 clave_Bank = "1234"
 saldo = 2500
 
+print("Bienvenido al Sistema:")
+
 def validar_usuario(u, c):
     if u == usuario_Bank and c == clave_Bank:
-        return True, print("Ha accedido correctamente.")
+        return True, print("Ha accedido correctamente."), print("Saldo: $" + str(saldo)), print()
     return False
 
 def login():
-    print()
-    print("Bienvenido al Sistema:")
     print()
     usuario = input("Usuario: ")
     clave = input("Contraseña: ")
@@ -18,36 +18,42 @@ def login():
 
 def retirar(valor):
    if valor > saldo:
-       return False, "Su saldo no es suficiente: " + "$" + str(saldo)
-   return True, "Su saldo ahora es de: " + "$" + str(saldo - valor)
+       return False, print("Su saldo no es suficiente, saldo: " + "$" + str(saldo))
+   elif valor >= 0:
+       return True, saldo - valor
+   else:
+       return False, print("No puede retirar un saldo inferior a 0")
 
 def depositar(valor):
-   if valor <= 0:
-       return False, "No puede depositar un saldo inferior a 0"
-   return True, "Su saldo ahora es de: " + "$" + str(saldo + valor)
+   if valor < 0:
+       return False, print("No puede depositar un saldo inferior a 0")
+   return True, saldo + valor   
 
 def accion(opcion):
-    if opcion == 1:
-        valor = int(input("Cuánto desea depositar")
+    if opcion == "1":
+        valor = int(input("$"))
         return depositar(valor)
-    if opcion == 2:
-        valor = int(input("Cuánto desea retirar")
+    if opcion == "2":
+        valor = int(input("$"))
         return retirar(valor)
-
-    return False, print("Operación no válida.")
+        
+    return False, print("Opción no válida.")
 
 def ejecutar():
     if not login():
         print("Usuario o contraseña incorrecto.")
-        return        
+        return ejecutar()
 
-    print("1.Depositar o 2.Retirar")
-    opcion = int(input())
+    print("Seleccione una opción:")
+    print()
+    opcion = input("1.Depositar o 2.Retirar ")
     
     ok, saldo = accion(opcion)
     if not ok:
-        print("Operación no realizada, saldo: ", saldo) 
+        return ejecutar()
     else:
-        print("Operación realizada con éxito, saldo: ", saldo)
+        print("Operación realizada con éxito, saldo: $" + str(int(saldo)))
+
 
 ejecutar()
+
