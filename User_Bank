@@ -1,5 +1,5 @@
-usuario_Bank = "bryanth"
-clave_Bank = "9910"
+usuario_Bank = "kirito"
+clave_Bank = "1234"
 saldo = 2500
 
 def validar_usuario(u, c):
